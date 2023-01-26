@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.exercises.*;
+import org.example.exercises.Hard.ConsentRequest;
+import org.example.exercises.Hard.ConsentResponse;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,15 +61,41 @@ public class Main {
                 // System.out.println(streams.getStudentsWithNameStartingWith('J'));
                 // System.out.println(streams.getStudentsWithEvenAge());
 
-                // # Fish
-                // System.out.print("should be: 3, is = ");
-                // Fish.howManyTimesFishComeOut2("uuddduudduu");
+                // # Fish - not-works
+                System.out.println("should be: 3, is = ");
+                Fish.howManyTimesFishComeOut3("uuddduudduu");
                 // System.out.print("should be: 2, is = ");
-                // Fish.howManyTimesFishComeOut("ddduuuudddduuuu");
+                // Fish.howManyTimesFishComeOut3("ddduuuudddduuuu");
                 // System.out.print("should be: 5, is = ");
-                // Fish.howManyTimesFishComeOut("uudddduuudduuuudddduuddduuu");
+                // Fish.howManyTimesFishComeOut3("uudddduuudduuuudddduuddduuu");
                 // System.out.print("should be: 1, is = ");
-                // Fish.howManyTimesFishComeOut("ddddduuuuudduuu");
+                // Fish.howManyTimesFishComeOut3("ddddduuuuudduuu");
+
+                // # HARD
+                // Hard hard = new Hard();
+
+                // List<ConsentResponse> response = List.of(
+                // new ConsentResponse(1L, true),
+                // new ConsentResponse(2L, true));
+
+                // List<ConsentRequest> request = List.of(
+                // new ConsentRequest(1L, true),
+                // new ConsentRequest(2L, true));
+
+                // // should return true
+                // System.out.println(hard.areConsentsValid(request, response));
+
+                // List<ConsentResponse> response2 = List.of(
+                // new ConsentResponse(1L, true),
+                // new ConsentResponse(2L, true));
+
+                // List<ConsentRequest> request2 = List.of(
+                // new ConsentRequest(1L, false),
+                // new ConsentRequest(2L, true));
+
+                // // should return false poniewaz responseId:1 jest required, a w requestId: 1
+                // // jest accepted: false
+                // System.out.println(hard.areConsentsValid(request2, response2));
 
         }
 }

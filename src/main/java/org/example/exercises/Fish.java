@@ -1,5 +1,8 @@
 package org.example.exercises;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Fish {
 
     /*
@@ -16,6 +19,61 @@ public class Fish {
      * np: ddduuuudddduuuu to rybka wyplynela 2 razy
      * uuddduudduu tu wyplynela 3 razy
      */
+
+    public static Integer howManyTimesFishComeOut3(String moves) {
+        int counter = 0;
+        int up = 0;
+        int down = 0;
+        var firstChar = moves.charAt(0);
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
+        List<String> tempList = new ArrayList();
+        List<String> tempList2 = new ArrayList();
+
+        // koncepcja
+        // 1 lista z uu
+        // 2 lista z ddd
+        // potem ich wartosci porownac i jestli jest > 0 to znaczy wynurzenie
+
+        // u
+        for (int i = 0; i < moves.toCharArray().length; i++) {
+            if (moves.charAt(i) == 'u') {
+                sb.append(moves.charAt(i));
+            } else {
+                if (sb.length() > 0) {
+                    tempList.add(sb.toString());
+                    sb.setLength(0);
+                }
+            }
+        }
+        if (moves.charAt(moves.toCharArray().length - 1) == 'u') {
+            tempList.add(sb.toString());
+            sb.setLength(0);
+        }
+
+        // d
+        for (int i = 0; i < moves.toCharArray().length; i++) {
+            if (moves.charAt(i) == 'd') {
+                sb2.append(moves.charAt(i));
+            } else {
+                if (sb2.length() > 0) {
+                    tempList2.add(sb2.toString());
+                    sb2.setLength(0);
+                }
+            }
+        }
+        if (moves.charAt(moves.toCharArray().length - 1) == 'd') {
+            tempList2.add(sb2.toString());
+            sb2.setLength(0);
+        }
+
+        // tutaj skonczylem
+
+        System.out.println(tempList);
+        System.out.println(tempList2);
+        System.out.println(moves);
+        return null;
+    }
 
     public static Integer howManyTimesFishComeOut2(String moves) {
         int up = 0;
