@@ -1,5 +1,6 @@
 package org.example.exercises;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Streams {
@@ -36,7 +37,9 @@ public class Streams {
 
     public Student getTheOldestStudent() {
 
-        var maxAge = students.stream().map(student -> student.age).max(Integer::compareTo).get();
+        //Student maxAge = students.stream().max(Comparator.comparing(v -> v.age)).orElseThrow();
+
+        var maxAge = students.stream().map(student -> student.age).max(Integer::compareTo).orElseThrow();
 
         return students.stream()
                 .filter(student -> student.age == maxAge).findFirst().orElseThrow();

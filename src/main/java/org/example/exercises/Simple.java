@@ -18,7 +18,7 @@ public class Simple {
         return word.equalsIgnoreCase(word2);
     }
 
-    public static String letterThatOccursMostOften(String word) {
+    public static char letterThatOccursMostOften(String word) {
         word = word.replaceAll(" ", "").toLowerCase();
         Map<Character, Integer> myMap = new LinkedHashMap<>();
 
@@ -37,8 +37,7 @@ public class Simple {
             listOfValues.add(value);
         });
 
-        return listOfCharacters.get(listOfValues.indexOf(Collections.max(listOfValues))) + "=" +
-                listOfValues.get(listOfValues.indexOf(Collections.max(listOfValues)));
+        return listOfCharacters.get(listOfValues.indexOf(Collections.max(listOfValues)));
     }
 
     public static String reverseWordsInText(String word) {
@@ -61,10 +60,6 @@ public class Simple {
         return sb.toString();
     }
 
-    // Mając do dyspozycji tablicę liczb i liczbę k, określ, czy w tablicy są trzy
-    // pozycje, które
-    // sumują się do podanej liczby k. Na przykład, biorąc pod uwagę [20, 303, 3, 4,
-    // 25] i k = 49, zwróć wartość “true”, ponieważ 20 + 4 + 25 = 49.
     public static Boolean threeItemsInArrayAddUpToGivenNumber(List<Integer> numbers, int number) {
 
         boolean result = false;
@@ -74,7 +69,6 @@ public class Simple {
             for (int j = i + 1; j < numbers.size(); j++) {
                 for (int k = j + 1; k < numbers.size(); k++) {
                     if (numbers.get(i) + numbers.get(j) + numbers.get(k) == number) {
-                        System.out.println(numbers.get(i) + "+" + numbers.get(j) + "+" + numbers.get(k));
                         result = true;
                     }
                 }
@@ -84,7 +78,7 @@ public class Simple {
         return result;
     }
 
-    public static void printHowManyTimesEachLetterOccurInText(String text) {
+    public static Map<Character, Integer> printHowManyTimesEachLetterOccurInText(String text) {
         text = text.replaceAll(" ", "").toLowerCase();
         Map<Character, Integer> myMap = new LinkedHashMap<>();
 
@@ -94,6 +88,6 @@ public class Simple {
                 myMap.put(text.charAt(i), myMap.get(text.charAt(i)) + 1);
             }
         }
-        System.out.println(myMap);
+        return myMap;
     }
 }
