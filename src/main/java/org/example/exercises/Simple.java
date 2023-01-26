@@ -61,46 +61,27 @@ public class Simple {
         return sb.toString();
     }
 
-    // Mając do dyspozycji tablicę liczb i liczbę k, określ, czy w tablicy są trzy pozycje, które
-    // sumują się do podanej liczby k. Na przykład, biorąc pod uwagę [20, 303, 3, 4, 25] i k = 49, zwróć wartość “true”, ponieważ 20 + 4 + 25 = 49.
+    // Mając do dyspozycji tablicę liczb i liczbę k, określ, czy w tablicy są trzy
+    // pozycje, które
+    // sumują się do podanej liczby k. Na przykład, biorąc pod uwagę [20, 303, 3, 4,
+    // 25] i k = 49, zwróć wartość “true”, ponieważ 20 + 4 + 25 = 49.
     public static Boolean threeItemsInArrayAddUpToGivenNumber(List<Integer> numbers, int number) {
 
-        int sum = 0;
-        int iteration = 0;
+        boolean result = false;
         numbers = numbers.stream().sorted().toList();
 
-            while (iteration < 4) {
-
-                for (int i = 0; i < numbers.size(); i++) {
-
-                    if (iteration > 3) {
-                        break;
-                    }
-
-                    if (sum < number && iteration < 4) {
-                        sum += numbers.get(i);
-                        iteration++;
-                        continue;
-                    }
-
-                    if (sum >= number) {
-                        iteration = 0;
-                        sum = 0;
-
-                        //i = 0;
-                        break;
-                    }
-
-                    if (sum == number && iteration <= 3) {
-                        break;
+        for (int i = 0; i < numbers.size(); i++) {
+            for (int j = i + 1; j < numbers.size(); j++) {
+                for (int k = j + 1; k < numbers.size(); k++) {
+                    if (numbers.get(i) + numbers.get(j) + numbers.get(k) == number) {
+                        System.out.println(numbers.get(i) + "+" + numbers.get(j) + "+" + numbers.get(k));
+                        result = true;
                     }
                 }
             }
+        }
 
-        System.out.println(sum);
-        System.out.println(numbers);
-
-        return null;
+        return result;
     }
 
     public static void printHowManyTimesEachLetterOccurInText(String text) {
