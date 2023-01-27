@@ -19,7 +19,6 @@ Zadanie polega na walidacji zgód.
 Walidacja polega na:
     - wszystkie zgody z frontu muszą sie zawierać w liscie, która pobieramy z serwisu A
     - jezeli zgoda jest required to z frontu musi przyjsc true w accepted
-    - jezeli zgoda nie jest required moze tam byc null albo false
 
 w tym przypadku request przyszedl ok poniewaz id z Y zawieraja sie w X oraz zgoda wymagana ma true i zgoda nie wymagana
 false
@@ -106,8 +105,6 @@ public class Hard {
         var requestIds = consentsRequests.stream().map(ConsentRequest::getId).toList();
         var responseIds = consentsResponse.stream().map(ConsentResponse::getId).toList();
 
-        // - wszystkie zgody z frontu muszą sie zawierać w liscie, która pobieramy z
-        // serwisu A
         if (requestIds.containsAll(responseIds)) {
             isValid = true;
         } else {
@@ -118,15 +115,11 @@ public class Hard {
                 .filter(requests -> consentsResponse.stream().anyMatch(one -> one.required.equals(requests.accepted)))
                 .toList();
 
-        // - jezeli zgoda jest required to z frontu musi przyjsc true w accepted
         if (allRequiredRequests.size() == consentsResponse.size()) {
             isValid = true;
         } else {
             isValid = false;
         }
-
-        // - - jezeli zgoda nie jest required moze tam byc null albo false
-        // nie czaje tego
 
         return isValid;
     }

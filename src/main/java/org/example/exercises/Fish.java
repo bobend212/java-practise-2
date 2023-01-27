@@ -1,8 +1,5 @@
 package org.example.exercises;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Fish {
 
     /*

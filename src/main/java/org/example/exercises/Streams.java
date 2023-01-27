@@ -1,6 +1,5 @@
 package org.example.exercises;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class Streams {
@@ -24,23 +23,18 @@ public class Streams {
     }
 
     List<Student> students = List.of(
-        new Student(1, "Jan"),
-        new Student(2, "Janusz"),
-        new Student(3, "Michal"),
-        new Student(4, "Piotr"),
-        new Student(5, "Pawel")
-    );
+            new Student(1, "Jan"),
+            new Student(2, "Janusz"),
+            new Student(3, "Michal"),
+            new Student(4, "Piotr"),
+            new Student(5, "Pawel"));
 
     public Integer countAgeOfAllStudents() {
         return students.stream().mapToInt(student -> student.age).sum();
     }
 
     public Student getTheOldestStudent() {
-
-        //Student maxAge = students.stream().max(Comparator.comparing(v -> v.age)).orElseThrow();
-
         var maxAge = students.stream().map(student -> student.age).max(Integer::compareTo).orElseThrow();
-
         return students.stream()
                 .filter(student -> student.age == maxAge).findFirst().orElseThrow();
     }
@@ -50,6 +44,6 @@ public class Streams {
     }
 
     public List<Student> getStudentsWithEvenAge() {
-        return  students.stream().filter(student -> student.age % 2 == 0).toList();
+        return students.stream().filter(student -> student.age % 2 == 0).toList();
     }
 }
